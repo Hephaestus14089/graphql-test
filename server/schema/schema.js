@@ -1,5 +1,7 @@
 const graphql = require('graphql');
-const _ = require('lodash');
+// const _ = require('lodash');
+const Books = require('../models/books');
+const Authors = require('../models/authors');
 
 const { 
     GraphQLObjectType, 
@@ -86,7 +88,7 @@ const BookType = new GraphQLObjectType({
             resolve(parent, args) {
                 // code to get data from db / other source
 
-                return _.find(authors, { id: parent.authorId });
+                // return _.find(authors, { id: parent.authorId });
             }
         } // end of 'author' field
     }) // end of 'fields'
@@ -105,7 +107,7 @@ const AuthorType = new GraphQLObjectType({
             resolve(parent, args) {
                 // code to get data from db / other source
 
-                return _.filter(books, { authorId: parent.id });
+                // return _.filter(books, { authorId: parent.id });
             }
         } // end of 'books' field
     }) // end of 'fields
@@ -126,7 +128,7 @@ const RootQuery = new GraphQLObjectType({
             resolve(parent, args) {
                 // code to get data from db / other source
 
-                return _.find(books, { id: args.id });
+                // return _.find(books, { id: args.id });
             }
         }, // end of 'book' field
 
@@ -139,7 +141,7 @@ const RootQuery = new GraphQLObjectType({
             resolve(parent, args) {
                 // code to get data from db / other source
 
-                return _.find(authors, { id: args.id });
+                // return _.find(authors, { id: args.id });
             }
         }, // end of 'author' field
 
@@ -149,7 +151,7 @@ const RootQuery = new GraphQLObjectType({
             resolve(parent, args) {
                 // code to get data from db / other source
 
-                return books;
+                // return books;
             }
         }, // end of 'books' field
 
@@ -159,7 +161,7 @@ const RootQuery = new GraphQLObjectType({
             resolve(parent, args) {
                 // code to get data from db / other source
                 
-                return authors;
+                // return authors;
             }
         } // end of 'authors' field
 
