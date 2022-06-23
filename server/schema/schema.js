@@ -25,9 +25,7 @@ const BookType = new GraphQLObjectType({
             type: AuthorType,
 
             resolve(parent, args) {
-                // code to get data from db / other source
-
-                // return _.find(authors, { id: parent.authorId });
+                return Author.findById(parent.authorId);
             }
         } // end of 'author' field
     }) // end of 'fields'
@@ -44,9 +42,7 @@ const AuthorType = new GraphQLObjectType({
             type: new GraphQLList(BookType),
 
             resolve(parent, args) {
-                // code to get data from db / other source
-
-                // return _.filter(books, { authorId: parent.id });
+                return Book.find({ authorId: parent.id });
             }
         } // end of 'books' field
     }) // end of 'fields
@@ -65,9 +61,7 @@ const RootQuery = new GraphQLObjectType({
             },
 
             resolve(parent, args) {
-                // code to get data from db / other source
-
-                // return _.find(books, { id: args.id });
+                return Book.findById(args.id);
             }
         }, // end of 'book' field
 
@@ -78,9 +72,7 @@ const RootQuery = new GraphQLObjectType({
             },
 
             resolve(parent, args) {
-                // code to get data from db / other source
-
-                // return _.find(authors, { id: args.id });
+                return Author.findById(args.id);
             }
         }, // end of 'author' field
 
@@ -88,9 +80,7 @@ const RootQuery = new GraphQLObjectType({
             type: new GraphQLList(BookType),
             
             resolve(parent, args) {
-                // code to get data from db / other source
-
-                // return books;
+                return Book.find({});
             }
         }, // end of 'books' field
 
@@ -98,9 +88,7 @@ const RootQuery = new GraphQLObjectType({
             type: new GraphQLList(AuthorType),
 
             resolve(parent, args) {
-                // code to get data from db / other source
-                
-                // return authors;
+                return Author.find({});
             }
         } // end of 'authors' field
 
